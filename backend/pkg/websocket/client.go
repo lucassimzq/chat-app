@@ -1,16 +1,21 @@
 package websocket
 
 import (
+    "context"
 	"fmt"
 	"log"
 
 	"github.com/gorilla/websocket"
+    "github.com/zhenquansim/chat-app/models"
+    "go.mongodb.org/mongo-driver/mongo"
+
 )
 
 type Client struct {
     ID   string
     Conn *websocket.Conn
     Pool *Pool
+    Db   *mongo.Database
 }
 
 type Message struct {
@@ -33,5 +38,8 @@ func (c *Client) Read() {
         message := Message{Type: messageType, Body: string(p)}
         c.Pool.Broadcast <- message
         fmt.Printf("Message Received: %+v\n", message)
+        coll := c.Db.Collection("messages")
+        collMessage := models.Message{string(p), 1, 1}
+        _, err = coll.InsertOne(context.Background(), collMessage)
     }
 }
