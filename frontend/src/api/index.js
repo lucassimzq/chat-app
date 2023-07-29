@@ -3,7 +3,8 @@ var socket = new WebSocket("ws://localhost:8080/ws");
 let connect = (cb) => {
 	console.log("connecting");
 
-	socket.onopen = () => {
+	socket.onopen = (data) => {
+		console.log("data", data);
 		console.log("Successfully Connected");
 	};
 
