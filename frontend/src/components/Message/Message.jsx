@@ -1,6 +1,5 @@
 // src/components/Message/Message.jsx
 import React, { Component } from "react";
-import "./Message.scss";
 
 class Message extends Component {
 	constructor(props) {
@@ -12,7 +11,11 @@ class Message extends Component {
 	}
 
 	render() {
-		return <div className="Message">{this.state.message.body}</div>;
+		return (
+			<div className="bg-white rounded-full shadow inline float-left clear-both px-3 mb-3">
+				{this.state.message.body}
+			</div>
+		);
 	}
 }
 

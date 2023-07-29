@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./ChatHistory.scss";
 import Message from "../Message";
 
 class ChatHistory extends Component {
@@ -10,7 +9,7 @@ class ChatHistory extends Component {
 		));
 
 		return (
-			<div className="ChatHistory">
+			<div className="px-5">
 				<h2>Chat History</h2>
 				{messages}
 			</div>

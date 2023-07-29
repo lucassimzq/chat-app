@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import "./ChatInput.scss";
 
 class ChatInput extends Component {
 	render() {
 		return (
-			<div className="ChatInput">
-				<input onKeyDown={this.props.send} />
+			<div className="px-5">
+				<input
+					onKeyDown={this.props.send}
+					className="border w-full rounded-full shadow px-3 py-2"
+				/>
 			</div>
 		);
 	}
